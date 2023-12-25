@@ -56,8 +56,12 @@ public class PersonService {
 	}
 	
 	public Person update(Person person) {
-		logger.info("Update one person!");
+		logger.info("Updating one person!");
 		return person;
+	}
+	
+	public void delete(String id) {
+		logger.info("Deleting one person!");
 	}
 	
 
