@@ -3,10 +3,10 @@ package mz.com.maculuve.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class UnsupportedMathOperationException extends RuntimeException{
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourseNotFondExecption extends RuntimeException{
 
-	public UnsupportedMathOperationException(String ex) {
+	public ResourseNotFondExecption(String ex) {
 		super(ex);
 	}
 
