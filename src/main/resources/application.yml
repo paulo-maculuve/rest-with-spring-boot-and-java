@@ -1,13 +1,14 @@
 spring:
-    datasource:
-       driver-class-name: com.mysql.cj.jdbc.Driver
-       url: jdbc:mysql://localhost:3306/rest_spring_boot_api
-       username: root
-       password:
-    jpa:
-       hibernate:
-          ddl-auto: update
-       properties:
-          hibernate:
-             dialect: org.hibernate.dialect.MySQL8Dialect
-          show-sql: false
+   datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/rest_spring_boot_api
+      username: root
+      password: null
+   jpa:
+      open-in-view: false
+      hibernate:
+         ddl-auto: update
+#properties:
+#  hibernate:
+#   dialect: org.hibernate.dialect.MySQLDialect
+         show-sql: false
