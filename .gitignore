@@ -1,1 +1,29 @@
-/target/
+# Arquivos de compilação
+target/
+
+# Diretório de configuração do Eclipse
+.classpath
+.project
+.settings/
+
+# Diretório de configuração do IntelliJ IDEA
+.idea/
+
+# Arquivos de log
+log/
+*.log
+
+# Arquivos de propriedades de ambiente
+application.properties
+
+# Arquivos de log do Spring Boot
+spring.log
+
+# Arquivos temporários gerados pelo Spring Boot DevTools
+restart.*
+
+# Arquivos temporários
+*.tmp
+
+# Arquivos de configuração específicos do sistema
+application-{profile}.properties
