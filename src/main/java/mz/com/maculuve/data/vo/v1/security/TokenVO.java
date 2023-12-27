@@ -12,18 +12,18 @@ public class TokenVO implements Serializable {
 	private Boolean authenticated;
 	private Date created;
 	private Date expiration;
-	private String acessToken;
+	private String accessToken;
 	private String refreshToken;
 	
 	public TokenVO() {}
 
-	public TokenVO(String username, Boolean authenticated, Date created, Date expiration, String acessToken,
+	public TokenVO(String username, Boolean authenticated, Date created, Date expiration, String accessToken,
 			String refreshToken) {
 		this.username = username;
 		this.authenticated = authenticated;
 		this.created = created;
 		this.expiration = expiration;
-		this.acessToken = acessToken;
+		this.accessToken = accessToken;
 		this.refreshToken = refreshToken;
 	}
 
@@ -59,12 +59,12 @@ public class TokenVO implements Serializable {
 		this.expiration = expiration;
 	}
 
-	public String getAcessToken() {
-		return acessToken;
+	public String getAccessToken() {
+		return accessToken;
 	}
 
-	public void setAcessToken(String acessToken) {
-		this.acessToken = acessToken;
+	public void setAccessToken(String acessToken) {
+		this.accessToken = acessToken;
 	}
 
 	public String getRefreshToken() {
@@ -77,7 +77,7 @@ public class TokenVO implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(acessToken, authenticated, created, expiration, refreshToken, username);
+		return Objects.hash(accessToken, authenticated, created, expiration, refreshToken, username);
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class TokenVO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		TokenVO other = (TokenVO) obj;
-		return Objects.equals(acessToken, other.acessToken) && Objects.equals(authenticated, other.authenticated)
+		return Objects.equals(accessToken, other.accessToken) && Objects.equals(authenticated, other.authenticated)
 				&& Objects.equals(created, other.created) && Objects.equals(expiration, other.expiration)
 				&& Objects.equals(refreshToken, other.refreshToken) && Objects.equals(username, other.username);
 	}
