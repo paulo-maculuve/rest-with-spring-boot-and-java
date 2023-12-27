@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import mz.com.maculuve.data.vo.v1.PersonVO;
-import mz.com.maculuve.model.Person;
 import mz.com.maculuve.services.PersonService;
 
 @RestController
-@RequestMapping("/PersonVO")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
 	@Autowired
