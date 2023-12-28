@@ -15,39 +15,51 @@ import mz.com.maculuve.security.jwt.JwtTokenProvider;
 
 @Service
 public class AuthService {
-
 	
-	@Autowired
-	private JwtTokenProvider jwtTokenProvider;
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private JwtTokenProvider jwtTokenProvider;
+
 	
+
 	@Autowired
 	private UserRepository userRepository;
-	
-	@SuppressWarnings("unused")
-	public ResponseEntity signIn(AccountCredentialsVO accountCredentialsVO){
+
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity signIn(AccountCredentialsVO accountCredentialsVO) {
 		try {
 			var usarname = accountCredentialsVO.getUsername();
 			var password = accountCredentialsVO.getPassword();
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usarname, password));
-			var user = userRepository.findUsername(usarname);
-			
+			var user = userRepository.findByUsername(usarname);
+
 			var tokenResponse = new TokenVO();
-			if (tokenResponse != null) {
+			if (user != null) {
 				tokenResponse = jwtTokenProvider.createAccessToken(usarname, user.getRole());
-			}else {
+			} else {
 				throw new UsernameNotFoundException("Username " + usarname + " not found!");
 			}
-			
+
 			return ResponseEntity.ok(tokenResponse);
-			
+
 		} catch (Exception e) {
 			throw new BadCredentialsException("Invalid username or password supplied!");
 		}
-		
-		
-		
+	}
+
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity refreshToken(String username, String refreshToken) {
+		var user = userRepository.findByUsername(username);
+
+		var tokenResponse = new TokenVO();
+		if (user != null) {
+			tokenResponse = jwtTokenProvider.refreshToken(refreshToken);
+		} else {
+			throw new UsernameNotFoundException("Username " + username + " not found!");
+		}
+		return ResponseEntity.ok(tokenResponse);
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import mz.com.maculuve.exceptions.ExceptionResponse;
 import mz.com.maculuve.exceptions.InvalidJwtAuthenticationException;
+import mz.com.maculuve.exceptions.RequiredObjectIsNullException;
 import mz.com.maculuve.exceptions.ResourceNotFoundException;
 
 @ControllerAdvice
@@ -51,6 +52,17 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 				request.getDescription(false));
 		
 		return new ResponseEntity<>(exceptionResponse, HttpStatus.FORBIDDEN);
+	}
+	@ExceptionHandler(RequiredObjectIsNullException.class)
+	public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(
+			Exception ex, WebRequest request) {
+		
+		ExceptionResponse exceptionResponse = new ExceptionResponse(
+				new Date(),
+				ex.getMessage(),
+				request.getDescription(false));
+		
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 
 }
